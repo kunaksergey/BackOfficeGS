@@ -1,3 +1,15 @@
+
+/*Таблица - user. Список пользователей
+UID - id пользователя
+LOGIN - логин пользователя
+PASSWORD - паоль пользователя
+*/
+CREATE TABLE IF NOT EXISTS user (
+    UID SERIAL PRIMARY KEY,
+    LOGIN        CHAR(20),
+    PASSWORD        VARCHAR(100)
+);
+
 /*Таблица - person. Список субъектов
 UID - id субъекта
 NAME - имя субъекта
@@ -65,7 +77,7 @@ CREATE TABLE IF NOT EXISTS account (
   MFO INTEGER,
   ADRESS VARCHAR(250),
   ISMAIN BOOLEAN,
-  COMPANY_ID  INTEGER REFERENCES company (UID)
+  PARENTUID  INTEGER REFERENCES company (UID)
 );
 
 /*Таблица - invoice. Список выписанных счетов
@@ -95,7 +107,7 @@ SUM - сумма записи
 */
 CREATE TABLE IF NOT EXISTS invoicedt (
   UID SERIAL PRIMARY KEY,
-  INVOICE_ID  INTEGER REFERENCES invoice (UID),
+  PARENTUID  INTEGER REFERENCES invoice (UID),
   DESCRIPTION VARCHAR (350),
   UNIT_ID INTEGER REFERENCES unit (UID),
   AMOUNT NUMERIC(4,2),

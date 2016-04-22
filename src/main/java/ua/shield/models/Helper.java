@@ -1,6 +1,8 @@
 package ua.shield.models;
 
 import javafx.scene.input.DataFormat;
+import org.apache.commons.codec.digest.Sha2Crypt;
+import ua.shield.service.Settings;
 
 import java.lang.reflect.ParameterizedType;
 import java.text.DateFormat;
@@ -33,6 +35,10 @@ public class Helper {
 
     public static String getGenericParameterClass(Class actualClass, int parameterIndex) {
         return ((Class) ((ParameterizedType) actualClass.getGenericSuperclass()).getActualTypeArguments()[parameterIndex]).getSimpleName().toLowerCase();
+    }
+
+    public static String getHashPassword(String passwd) {
+        return Sha2Crypt.sha256Crypt(passwd.getBytes());
     }
 
 }

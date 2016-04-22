@@ -5,6 +5,7 @@ import ua.shield.models.Unit;
 import ua.shield.store.unit.UnitCache;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,9 @@ public class UnitViewServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ServletConfig servletConfig = getServletConfig();
+        String servletInfo = getServletInfo();
+
         if (req.getParameter("uid") != null) {
             Unit unit = UNIT_CACHE.getBeenById(Integer.parseInt(req.getParameter("uid")));
             req.setAttribute("unit", unit);

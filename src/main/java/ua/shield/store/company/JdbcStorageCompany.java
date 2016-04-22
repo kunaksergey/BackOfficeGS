@@ -3,15 +3,13 @@ package ua.shield.store.company;
 
 import ua.shield.models.Account;
 import ua.shield.models.Company;
-import ua.shield.service.Settings;
+
 import ua.shield.store.JdbcStorageBeen;
-import ua.shield.store.StorageBeen;
+
 import ua.shield.store.StorageBeenDt;
 import ua.shield.store.account.JdbcStorageAccount;
-import ua.shield.store.account.StorageAccount;
-
 import java.sql.*;
-import java.util.ArrayList;
+
 import java.util.List;
 
 
