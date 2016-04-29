@@ -17,6 +17,13 @@ public class JdbcStoragePerson extends JdbcStorageBeen<Person> implements Storag
     final StorageBeen<Post> storagePost = new JdbcStoragePost();
 
     @Override
+    public Person createBeen() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
+        Person person = new Person();
+        person.setPost(storagePost.createBeen());
+        return person;
+    }
+
+    @Override
     protected Person generateBeen(ResultSet rs) throws SQLException {
         Person person = new Person();
         person.setUid(rs.getInt("uid"));

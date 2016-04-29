@@ -22,6 +22,11 @@ public class JdbcStorageAccount extends JdbcStorageBeenDt<Account> {
     }
 
     @Override
+    public Account createBeen() {
+        return new Account();
+    }
+
+    @Override
     protected Account generateBeen(ResultSet rs) throws SQLException {
         Account account = new Account();
         account.setUid(rs.getInt("uid"));
@@ -33,4 +38,6 @@ public class JdbcStorageAccount extends JdbcStorageBeenDt<Account> {
         account.setMain(rs.getBoolean("ismain"));
         return account;
     }
+
+
 }

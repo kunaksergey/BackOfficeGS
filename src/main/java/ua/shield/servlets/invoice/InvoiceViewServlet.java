@@ -6,14 +6,17 @@ import ua.shield.store.invoice.InvoiceCache;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
  * Created by sa on 18.04.16.
  */
+@WebServlet("/invoice/view")
 public class InvoiceViewServlet extends HttpServlet {
     private final InvoiceCache INVOICE_CACHE = InvoiceCache.getInstance();
 
@@ -22,6 +25,8 @@ public class InvoiceViewServlet extends HttpServlet {
         if (req.getParameter("uid") != null) {
             Invoice invoice = INVOICE_CACHE.getBeenById(Integer.parseInt(req.getParameter("uid")));
             req.setAttribute("invoice", invoice);
+            HttpSession session = req.getSession();
+            session.setAttribute("invoice", invoice);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/views/invoice/InvoiceView.jsp");
             dispatcher.forward(req, resp);
         } else {

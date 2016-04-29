@@ -48,6 +48,13 @@ public class JdbcStorageCompany extends JdbcStorageBeen<Company> {
     }
 
     @Override
+    public Company createBeen() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
+        Company company = new Company();
+        company.setAccountList(storageAccountList.createBeen());
+        return company;
+    }
+
+    @Override
     protected Company generateBeen(ResultSet rs) throws SQLException {
         Company company = new Company();
 
@@ -60,6 +67,7 @@ public class JdbcStorageCompany extends JdbcStorageBeen<Company> {
         company.setAccountList(storageAccountList.getBeenListDt(rs.getInt("uid")));
         return company;
     }
+
 
     private Account getMainAccount(List<Account> accountList) {
         for (Account account : accountList) {

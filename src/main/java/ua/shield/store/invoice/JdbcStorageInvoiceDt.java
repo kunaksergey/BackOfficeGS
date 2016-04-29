@@ -17,6 +17,13 @@ public class JdbcStorageInvoiceDt extends JdbcStorageBeenDt<InvoiceDt> {
     private final StorageBeen<Unit> storageUnit = new JdbcStorageUnit();
 
     @Override
+    public InvoiceDt createBeen() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
+        InvoiceDt invoiceDt = new InvoiceDt();
+        invoiceDt.setUnit(storageUnit.createBeen());
+        return invoiceDt;
+    }
+
+    @Override
     protected InvoiceDt generateBeen(ResultSet rs) throws SQLException {
         InvoiceDt invoiceDt = new InvoiceDt();
         invoiceDt.setUid(rs.getInt("uid"));

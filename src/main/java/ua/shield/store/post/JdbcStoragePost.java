@@ -11,6 +11,12 @@ import java.sql.SQLException;
  */
 public class JdbcStoragePost extends JdbcStorageBeen<Post> {
     @Override
+    public Post createBeen() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
+        Post post = new Post();
+        return post;
+    }
+
+    @Override
     protected Post generateBeen(ResultSet rs) throws SQLException {
         Post post = new Post();
         post.setUid(rs.getInt("uid"));

@@ -1,5 +1,6 @@
 package ua.shield.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class Company {
     private String edrpou;
     private String inn;
     private String address;
-    private List<Account> accountList;
+    private List<Account> accountList = new ArrayList<>();
     private Person supervisor;
 
     public Company() {
@@ -81,7 +82,11 @@ public class Company {
     }
 
     public void setAccountList(List<Account> accountList) {
-        this.accountList = accountList;
+        this.accountList.addAll(accountList);
+    }
+
+    public void setAccountList(Account accountList) {
+        this.accountList.add(accountList);
     }
 
     public Account getMainAccount() {

@@ -16,6 +16,9 @@
 <body>
 <table border="1">
     <tr>
+        <th colspan="3"><a href="/invoice/add">Создать</a></th>
+    </tr>
+    <tr>
         <td>Номер</td>
         <td>Наша компания</td>
         <td>Клиент</td>

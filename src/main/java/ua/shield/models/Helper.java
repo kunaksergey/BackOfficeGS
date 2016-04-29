@@ -17,7 +17,7 @@ import java.util.Locale;
  */
 public class Helper {
     public static String getNumberInvoice(Date date) {
-        return new SimpleDateFormat("MMdd").format(date);
+        return new SimpleDateFormat("ddMM").format(date);
     }
 
     public static String getDateLongString(Date date) {

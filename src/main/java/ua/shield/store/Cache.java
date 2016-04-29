@@ -20,6 +20,12 @@ public class Cache<T> implements StorageBeen<T> {
     }
 
     @Override
+    public T createBeen() throws IllegalAccessException, InstantiationException, ClassNotFoundException {
+        return storage.createBeen();
+    }
+
+
+    @Override
     public void updateBeen(T been) {
 
     }

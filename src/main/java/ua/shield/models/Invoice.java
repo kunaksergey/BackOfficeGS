@@ -29,8 +29,10 @@ public class Invoice {
     final EnumNds nds = EnumNds.NONDS;
     List<InvoiceDt> invoiceDtList = new ArrayList<>();
     private int countDetail = 0;
+    InvoiceMemoryStream invoiceMemoryStream;
 
     public Invoice() {
+
     }
 
     public int getUid() {
@@ -106,6 +108,9 @@ public class Invoice {
         this.invoiceDtList = invoiceDtList;
     }
 
+    public void setInvoiceDtList(InvoiceDt invoiceDtList) {
+        this.invoiceDtList.add(invoiceDtList);
+    }
 
     public int getCountDetail() {
         return countDetail;
@@ -131,10 +136,11 @@ public class Invoice {
         }
     }
 
+
     /*************************************/
 
 
-    @Override
+ /*   @Override
     public String toString() {
         StringBuffer str = new StringBuffer();
         str.append("Рахунок №").append(number).append("\n");
@@ -157,7 +163,7 @@ public class Invoice {
         str.append(" Разом без ПДВ ").append(getSumNoNds()).append("  ")
                 .append(nds.getDescription()).append(" ").append(" Разом с ПДВ ").append(getSumNds()).append("\n\n");
         return str.toString();
-    }
+    }*/
 
 
 }

@@ -8,7 +8,7 @@
         <meta attribute="class-description">
             This class contains the company detail.
         </meta>
-        <id name="getUid" type="int" column="uid">
+        <id name="uid" type="int" column="uid">
             <generator class="identity"/>
         </id>
         <property name="name" column="name" type="string"/>

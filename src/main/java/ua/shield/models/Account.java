@@ -5,6 +5,7 @@ package ua.shield.models;
  * Cчет банка
  *
  * @uid - id Аккаунта
+ * @parentUid -id родителя счета
  * @number - номер счета
  * @nameBank -наименования банка
  * @mfo - мфо банка

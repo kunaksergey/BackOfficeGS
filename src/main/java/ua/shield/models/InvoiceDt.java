@@ -4,17 +4,14 @@ package ua.shield.models;
  * Created by sa on 14.04.16.
  * Класс Invoice представляет собой класс описания счета
  *
- * @number - номер счета
- * @datInvoice - дата документа
- * @ourCompany - компания владелец
- * @clientCompany - компания клиент
- * @decription - описание счета
- * @sumNoNds - сумма без НДС
- * @nds - НДС
- * @sumNds - сумма с НДС
- * @countDetail - порядковый номер записи в детелизации счета
- */
-
+ * @uid - id
+ * @parentUid - id родителя
+ * @decription - описание записи
+ * @unit - класс единица измерения
+ * @amount - описание счета
+ * @price - цена без НДС
+ * @sum - сумма записи без НДС
+ **/
 public class InvoiceDt {
     int uid;
     int parentUid;

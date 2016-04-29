@@ -82,5 +82,12 @@ abstract public class JdbcStorageBeen<T> implements StorageBeen<T> {
         }
     }
 
+    /**
+     * @return возвращает пустой объект класса
+     */
+    public abstract T createBeen() throws IllegalAccessException, ClassNotFoundException, InstantiationException;
+
     abstract protected T generateBeen(ResultSet rs) throws SQLException;
+
+
 }

@@ -8,10 +8,45 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
+    <script src="${pageContext.request.contextPath}/js/jquery-2.2.3.js"></script>
+    <script src="${pageContext.request.contextPath}/js/invoice.js"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            $("#linkClient").on("click", function (event) {
+                event.preventDefault();
+                $("#dictionary").show();
+                $.getJSON("/company/view/json", function (data) {
+                    var items = [];
+                    $.each(data, function (key, obj) {
+                        items.push("<a href=\"\" class=\"companiesList\" uid=" + obj.uid + ">" + obj.fullName + "</a></br>");
+
+                    });
+                    $("#dictionaryBody").html(items);
+
+
+                    $("#dictionaryBody > a").on("click", function (event) {
+                        event.preventDefault();
+                        $("#clientCompany").text($(this).text());
+
+
+                    });
+                });
+            });
+
+            $(".closeDiv a").on("click", function (event) {
+                event.preventDefault();
+                $("#dictionary").hide();
+            });
+
+        });
+    </script>
+
+
     <title>Title</title>
 </head>
 <body>
@@ -23,7 +58,9 @@
 <br/>
 МФО: <c:out value="${invoice.ourCompany.mainAccount.mfo}"/>
 ЕДРПОУ: <c:out value="${invoice.ourCompany.edrpou}"/><br/>
-платник: <c:out value="${invoice.clientCompany.fullName}"/> <br/>
+<a href="" id="linkClient">платник:</a>
+<lable id="clientCompany"><c:out value="${invoice.clientCompany.fullName}"/></lable>
+<label> <br/>
 ПРИЗНАЧЕННЯ ПЛАТЕЖУ <c:out value="${invoice.description}"/><br/>
 </div>
 <div>
@@ -63,6 +100,16 @@
             <td><fmt:formatNumber value="${invoice.getSumNds()}" pattern="###.00"/></td>
         </tr>
     </table>
+</div>
+    <div>
+        <a href="/FileDownloadServlet">Download</a>
+    </div>
+    <div id="dictionary">
+        <div id="dictionaryTitle">
+            <div class="closeDiv"><a href="">x</a></div>
+        </div>
+        <div id="dictionaryBody">
+        </div>
 </div>
 </body>
 </html>

@@ -27,6 +27,12 @@ public class JdbcStorageUnit extends JdbcStorageBeen<Unit> {
 
     }
 
+    @Override
+    public Unit createBeen() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
+        Unit unit = new Unit();
+        return unit;
+    }
+
     protected Unit generateBeen(ResultSet rs) throws SQLException {
         Unit unit = new Unit();
         unit.setUid(rs.getInt("uid"));

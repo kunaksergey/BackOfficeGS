@@ -21,21 +21,26 @@ import javax.servlet.http.HttpSession;
 
 public class AuthenticationFilter implements Filter {
 
-    private ServletContext servletContext;
-
+    //private ServletContext servletContext;
+    private FilterConfig filterConfig;
+    private boolean isActive = false;
     public void init(FilterConfig fConfig) throws ServletException {
-        servletContext = fConfig.getServletContext();
+        filterConfig = fConfig;
+        isActive = Boolean.parseBoolean(filterConfig.getInitParameter("active").toLowerCase());
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse resp = (HttpServletResponse) response;
-        HttpSession session = req.getSession(false);
-        String requestURI = req.getRequestURI();
-        if (session == null && !(requestURI.endsWith("login.html") || requestURI.endsWith("login"))) {
-            resp.sendRedirect("/login.html");
+        if (isActive) {
+            HttpServletRequest req = (HttpServletRequest) request;
+            HttpServletResponse resp = (HttpServletResponse) response;
+            HttpSession session = req.getSession(false);
+            String requestURI = req.getRequestURI();
+            if (session == null && !(requestURI.endsWith("login.html") || requestURI.endsWith("login"))) {
+                resp.sendRedirect("/login.html");
+            } else {
+                chain.doFilter(request, response);
+            }
         } else {
-
             chain.doFilter(request, response);
         }
     }

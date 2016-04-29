@@ -13,10 +13,10 @@ import java.util.List;
 /**
  * Created by sa on 11.04.16.
  */
-public class HibernateStorage {
-   /*private final SessionFactory factory;
+public class HibernateStorageCompany {
+    private final SessionFactory factory;
 
-    public HibernateStorage()  {
+    public HibernateStorageCompany() {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
@@ -27,7 +27,7 @@ public class HibernateStorage {
 
 
 
-    @Override
+
     public List<Company> getCompanyList() {
         final Session session=factory.openSession();
         Transaction tx=session.beginTransaction();
@@ -39,23 +39,23 @@ public class HibernateStorage {
         }
     }
 
-    @Override
+
     public Company getCompanyById(int id) {
         return null;
     }
 
-    @Override
+
     public void saveCompanyById(Company company) {
 
     }
 
-    @Override
+
     public void addCompany(Company company) {
 
     }
 
-    @Override
+
     public void close() {
         this.factory.close();
-    }*/
+    }
 }
