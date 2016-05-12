@@ -35,7 +35,7 @@ public class JdbcStorageAccount extends JdbcStorageBeenDt<Account> {
         account.setNameBank(rs.getString("namebank"));
         account.setAddress(rs.getString("address"));
         account.setMfo(rs.getInt("mfo"));
-        account.setMain(rs.getBoolean("ismain"));
+        account.setIsMain(rs.getBoolean("ismain"));
         return account;
     }
 

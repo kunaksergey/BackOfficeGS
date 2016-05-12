@@ -1,7 +1,14 @@
 package ua.shield.models;
 
+import org.hibernate.annotations.CascadeType;
+
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import static org.hibernate.annotations.CascadeType.*;
 
 /**
  * Created by sa on 13.04.16.
@@ -24,6 +31,7 @@ public class Company {
     private String inn;
     private String address;
     private List<Account> accountList = new ArrayList<>();
+    private Set<Account> accountSet;
     private Person supervisor;
 
     public Company() {
@@ -85,9 +93,18 @@ public class Company {
         this.accountList.addAll(accountList);
     }
 
+    public Set<Account> getAccountSet() {
+        return accountSet;
+    }
+
+    public void setAccountSet(Set<Account> accountSet) {
+        this.accountSet = accountSet;
+    }
+
     public void setAccountList(Account accountList) {
         this.accountList.add(accountList);
     }
+
 
     public Account getMainAccount() {
         for (Account account : accountList) {
@@ -102,5 +119,16 @@ public class Company {
 
     public void setSupervisor(Person supervisor) {
         this.supervisor = supervisor;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append(name.trim()).append(" : ").append(fullName.trim()).append("\n");
+        str.append("Директор: ").append(supervisor.toString()).append("\n");
+        for (Account account : accountSet) {
+            str.append(account.toString());
+        }
+        return str.toString();
     }
 }

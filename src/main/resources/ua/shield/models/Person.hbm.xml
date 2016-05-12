@@ -3,27 +3,15 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="ua.shield.models">
-    <class name="Company" table="company">
+<hibernate-mapping>
+    <class name="ua.shield.models.Person" table="person">
         <meta attribute="class-description">
-            This class contains the company detail.
+            This class contains the person detail.
         </meta>
         <id name="uid" type="int" column="uid">
             <generator class="identity"/>
         </id>
-
-        <one-to-one name="supervisor" class="Person" cascade="all"/>
-
         <property name="name" column="name" type="string"/>
         <property name="fullName" column="fullname" type="string"/>
-
-        <set name="accountSet" table="account"
-             inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="parentuid"/>
-            </key>
-            <one-to-many class="Account"/>
-        </set>
-
     </class>
 </hibernate-mapping>

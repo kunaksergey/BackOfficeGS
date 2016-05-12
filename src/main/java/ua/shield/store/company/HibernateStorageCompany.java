@@ -5,8 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.Query;
 import ua.shield.models.Company;
+import ua.shield.store.HibernateStorageConnect;
 
 import java.util.List;
 
@@ -14,22 +14,15 @@ import java.util.List;
  * Created by sa on 11.04.16.
  */
 public class HibernateStorageCompany {
-    private final SessionFactory factory;
-
     public HibernateStorageCompany() {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        this.factory = new Configuration().configure().buildSessionFactory();
+
     }
 
 
 
 
     public List<Company> getCompanyList() {
-        final Session session=factory.openSession();
+        final Session session = HibernateStorageConnect.getINSTANCE().getFactory().openSession();
         Transaction tx=session.beginTransaction();
         try{
             return session.createQuery("from Company").list();
@@ -40,8 +33,16 @@ public class HibernateStorageCompany {
     }
 
 
-    public Company getCompanyById(int id) {
-        return null;
+    public Company getCompanyById(int uid) {
+        final Session session = HibernateStorageConnect.getINSTANCE().getFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        try {
+            Company c = (Company) session.get(Company.class, uid);
+            return c;
+        } finally {
+            tx.commit();
+            session.close();
+        }
     }
 
 
@@ -55,7 +56,7 @@ public class HibernateStorageCompany {
     }
 
 
-    public void close() {
+ /*   public void close() {
         this.factory.close();
-    }
+    }*/
 }

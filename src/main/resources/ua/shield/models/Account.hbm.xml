@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ua.shield.models">
+    <class name="Account" table="account">
+        <meta attribute="class-description">
+            This class contains the account detail.
+        </meta>
+        <id name="uid" type="int" column="uid">
+            <generator class="identity"/>
+        </id>
+        <many-to-one name="company" class="Company" fetch="select">
+            <column name="parentuid"/>
+        </many-to-one>
+        <property name="parentUid" column="parentuid" type="int" insert="false" update="false"/>
+        <property name="number" column="number" type="string"/>
+        <property name="nameBank" column="namebank" type="string"/>
+        <property name="mfo" column="mfo" type="int"/>
+        <property name="address" column="address" type="string"/>
+        <property name="isMain" column="ismain" type="boolean"/>
+    </class>
+</hibernate-mapping>
+
