@@ -1,9 +1,6 @@
 package ua.shield.models;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by sa on 14.04.16.
@@ -28,6 +25,7 @@ public class Invoice {
     String description;
     final EnumNds nds = EnumNds.NONDS;
     List<InvoiceDt> invoiceDtList = new ArrayList<>();
+    private Set<InvoiceDt> invoiceDtSet;
     private int countDetail = 0;
     InvoiceMemoryStream invoiceMemoryStream;
 
@@ -85,7 +83,7 @@ public class Invoice {
 
     public double getSumNoNds() {
         double sum = 0;
-        for (InvoiceDt invoiceDt : invoiceDtList) {
+        for (InvoiceDt invoiceDt : invoiceDtSet) {
             sum += invoiceDt.getSum();
         }
         return sum;
@@ -110,6 +108,14 @@ public class Invoice {
 
     public void setInvoiceDtList(InvoiceDt invoiceDtList) {
         this.invoiceDtList.add(invoiceDtList);
+    }
+
+    public Set<InvoiceDt> getInvoiceDtSet() {
+        return invoiceDtSet;
+    }
+
+    public void setInvoiceDtSet(Set<InvoiceDt> invoiceDtSet) {
+        this.invoiceDtSet = invoiceDtSet;
     }
 
     public int getCountDetail() {
@@ -140,9 +146,10 @@ public class Invoice {
     /*************************************/
 
 
- /*   @Override
+    @Override
     public String toString() {
         StringBuffer str = new StringBuffer();
+        str.append("------------Инвойс------------\n");
         str.append("Рахунок №").append(number).append("\n");
         str.append(date).append("\n");
         str.append("постачальник: ").append(ourCompany.getFullName()).append("\n");
@@ -154,7 +161,7 @@ public class Invoice {
 
         int line = 0;
 
-        for (InvoiceDt detail : invoiceDtList) {
+        for (InvoiceDt detail : invoiceDtSet) {
             line++;
             str.append(line).append(" | ").append(detail.getUid()).append(" | ").append(detail.getDecription()).append(" | ").append(detail.getUnit().getName())
                     .append(" | ").append(detail.getAmount()).append(" | ").append(detail.getPrice()).append(" | ")
@@ -162,8 +169,10 @@ public class Invoice {
         }
         str.append(" Разом без ПДВ ").append(getSumNoNds()).append("  ")
                 .append(nds.getDescription()).append(" ").append(" Разом с ПДВ ").append(getSumNds()).append("\n\n");
+
+        str.append("------------------------\n");
         return str.toString();
-    }*/
+    }
 
 
 }

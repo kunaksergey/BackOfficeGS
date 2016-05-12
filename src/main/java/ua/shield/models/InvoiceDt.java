@@ -25,6 +25,14 @@ public class InvoiceDt {
 
     }
 
+    public InvoiceDt(String decription, Unit unit, double amount, double price, double sum) {
+        this.decription = decription;
+        this.unit = unit;
+        this.amount = amount;
+        this.price = price;
+        this.sum = sum;
+    }
+
     public int getUid() {
         return uid;
     }
@@ -81,6 +89,17 @@ public class InvoiceDt {
         this.unit = unit;
     }
 
-
+    @Override
+    public String toString() {
+        return "InvoiceDt{" +
+                "uid=" + uid +
+                ", parentUid=" + parentUid +
+                ", decription='" + decription + '\'' +
+                ", unit=" + unit.getFullName().trim() +
+                ", amount=" + amount +
+                ", price=" + price +
+                ", sum=" + sum +
+                "}\n";
+    }
 }
 

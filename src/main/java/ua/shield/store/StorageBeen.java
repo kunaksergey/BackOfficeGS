@@ -36,6 +36,10 @@ public interface StorageBeen<T> {
      */
     void addBeen(T been);
 
+    /**
+     * @param been добавляет класс в базу
+     */
+    void deleteBeen(T been);
 
     /**
      * закрывает соеденение

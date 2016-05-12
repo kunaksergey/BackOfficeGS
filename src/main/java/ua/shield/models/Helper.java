@@ -32,9 +32,19 @@ public class Helper {
         return df.format(date);
     }
 
+    /*Получаем имя таблицы из generic'a*/
+    public static String getTableNameFromGeneric(Class actualClass, int parameterIndex) {
+        return getSimpleClassNameFromGeneric(actualClass).toLowerCase();
+    }
 
-    public static String getGenericParameterClass(Class actualClass, int parameterIndex) {
-        return ((Class) ((ParameterizedType) actualClass.getGenericSuperclass()).getActualTypeArguments()[parameterIndex]).getSimpleName().toLowerCase();
+    /*Получаем простое имя класса из generic'a*/
+    public static String getSimpleClassNameFromGeneric(Class actualClass) {
+        return getClassFromGeneric(actualClass).getSimpleName();
+    }
+
+    /*Получаем текущий класс из generic'a*/
+    public static Class getClassFromGeneric(Class actualClass) {
+        return ((Class) ((ParameterizedType) actualClass.getGenericSuperclass()).getActualTypeArguments()[0]);
     }
 
     public static String getHashPassword(String passwd) {

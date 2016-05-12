@@ -13,7 +13,8 @@ public class UnitCache extends Cache<Unit> {
     private static final UnitCache INCTANCE = new UnitCache();
 
     {
-        storage = new JdbcStorageUnit();
+        // storage = new JdbcStorageUnit();
+        storage = new HibernateStorageUnit();
     }
 
     private UnitCache() {

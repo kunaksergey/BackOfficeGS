@@ -10,16 +10,15 @@ package ua.shield.models;
  * @post -должность
  */
 public class Person {
-    int uid;
-    String name;
-    String fullName;
-    Post post;
+    private int uid;
+    private String name;
+    private String fullName;
+    private Post post;
 
     public Person() {
     }
 
-    public Person(int uid, String name, String fullName, Post post) {
-        this.uid = uid;
+    public Person(String name, String fullName, Post post) {
         this.name = name;
         this.fullName = fullName;
         this.post = post;
@@ -55,5 +54,12 @@ public class Person {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    @Override
+    public String toString() {
+        return "Директор: " +
+                name.trim() + ':' + fullName.trim() + " " + post + "\n";
+
     }
 }

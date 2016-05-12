@@ -29,7 +29,7 @@ public class JdbcStoragePerson extends JdbcStorageBeen<Person> implements Storag
         person.setUid(rs.getInt("uid"));
         person.setName(rs.getString("name"));
         person.setFullName(rs.getString("fullname"));
-        person.setPost(storagePost.getBeenById(rs.getInt("post_id")));
+        person.setPost(storagePost.getBeenById(rs.getInt("postid")));
         return person;
     }
 

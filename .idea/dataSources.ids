@@ -1,7 +1,358 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="PostgreSQL - postgres@localhost" uuid="d189581a-dc4b-4017-8854-9240776026fe">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  <data-source name="PostgreSQL - BackOfficeGS@localhost" uuid="d189581a-dc4b-4017-8854-9240776026fe">
+    <database-info product="PostgreSQL" version="9.4.7" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="POSTGRES" format-version="2.5">
+      <database id="1" name="BackOfficeGS"/>
+      <schema id="2" parent="1" name="public">
+        <object-id>2200</object-id>
+        <comment>standard public schema</comment>
+        <introspection-state-number>848</introspection-state-number>
+        <introspection-timestamp>2016-04-29.14:12:12.794</introspection-timestamp>
+      </schema>
+      <sequence id="3" parent="2" name="account_uid_seq">
+        <object-id>16453</object-id>
+        <state-number>765</state-number>
+      </sequence>
+      <sequence id="4" parent="2" name="company_uid_seq">
+        <object-id>16461</object-id>
+        <state-number>775</state-number>
+      </sequence>
+      <sequence id="5" parent="2" name="invoice_dt_uid_seq">
+        <object-id>16505</object-id>
+        <state-number>811</state-number>
+      </sequence>
+      <sequence id="6" parent="2" name="invoice_uid_seq">
+        <object-id>16478</object-id>
+        <state-number>789</state-number>
+      </sequence>
+      <sequence id="7" parent="2" name="person_uid_seq">
+        <object-id>16440</object-id>
+        <state-number>757</state-number>
+      </sequence>
+      <sequence id="8" parent="2" name="post_uid_seq">
+        <object-id>16414</object-id>
+        <state-number>749</state-number>
+      </sequence>
+      <sequence id="9" parent="2" name="unit_uid_seq">
+        <object-id>16422</object-id>
+        <state-number>752</state-number>
+      </sequence>
+      <table id="10" parent="2" name="account">
+        <object-id>16455</object-id>
+        <state-number>807</state-number>
+      </table>
+      <table id="11" parent="2" name="company">
+        <object-id>16463</object-id>
+        <state-number>807</state-number>
+      </table>
+      <table id="12" parent="2" name="invoice">
+        <object-id>16480</object-id>
+        <state-number>811</state-number>
+      </table>
+      <table id="13" parent="2" name="invoicedt">
+        <object-id>16507</object-id>
+        <state-number>839</state-number>
+      </table>
+      <table id="14" parent="2" name="person">
+        <object-id>16442</object-id>
+        <state-number>775</state-number>
+      </table>
+      <table id="15" parent="2" name="post">
+        <object-id>16416</object-id>
+        <state-number>757</state-number>
+      </table>
+      <table id="16" parent="2" name="unit">
+        <object-id>16424</object-id>
+        <state-number>829</state-number>
+      </table>
+      <column id="17" parent="10" name="uid">
+        <state-number>765</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;account_uid_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="18" parent="10" name="number">
+        <state-number>765</state-number>
+        <data-type>char(14)</data-type>
+      </column>
+      <column id="19" parent="10" name="namebank">
+        <state-number>765</state-number>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="20" parent="10" name="mfo">
+        <state-number>765</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="21" parent="10" name="address">
+        <state-number>765</state-number>
+        <data-type>varchar(250)</data-type>
+      </column>
+      <column id="22" parent="10" name="isMain">
+        <state-number>801</state-number>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="23" parent="10" name="parentuid">
+        <state-number>848</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <index id="24" parent="10" name="account_pkey">
+        <object-id>16459</object-id>
+        <columns>uid</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="25" parent="10" name="fki_account_company_uid_fkey">
+        <object-id>16504</object-id>
+        <columns>#9</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="26" parent="10" name="account_pkey">
+        <columns>uid</columns>
+        <underlying-index>account_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="27" parent="10" name="account_company_uid_fkey">
+        <columns>#9</columns>
+        <ref-key>~.company.company_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="28" parent="11" name="uid">
+        <state-number>775</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;company_uid_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="29" parent="11" name="name">
+        <state-number>775</state-number>
+        <data-type>char(50)</data-type>
+      </column>
+      <column id="30" parent="11" name="fullname">
+        <state-number>775</state-number>
+        <data-type>varchar(150)</data-type>
+      </column>
+      <column id="31" parent="11" name="edrpou">
+        <state-number>775</state-number>
+        <data-type>char(50)</data-type>
+      </column>
+      <column id="32" parent="11" name="inn">
+        <state-number>775</state-number>
+        <data-type>char(50)</data-type>
+      </column>
+      <column id="33" parent="11" name="address">
+        <state-number>775</state-number>
+        <data-type>varchar(250)</data-type>
+      </column>
+      <column id="34" parent="11" name="parentUid">
+        <state-number>841</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <index id="35" parent="11" name="company_pkey">
+        <object-id>16470</object-id>
+        <columns>uid</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="36" parent="11" name="company_pkey">
+        <columns>uid</columns>
+        <underlying-index>company_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="37" parent="11" name="company_person_id_fkey">
+        <columns>parentUid</columns>
+        <ref-key>~.person.person_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="38" parent="12" name="uid">
+        <state-number>789</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;invoice_uid_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="39" parent="12" name="datedoc">
+        <state-number>789</state-number>
+        <data-type>date</data-type>
+      </column>
+      <column id="40" parent="12" name="our_id">
+        <state-number>789</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="41" parent="12" name="client_id">
+        <state-number>794</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="42" parent="12" name="description">
+        <state-number>789</state-number>
+        <data-type>varchar(350)</data-type>
+      </column>
+      <column id="43" parent="12" name="number">
+        <state-number>799</state-number>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <index id="44" parent="12" name="invoice_pkey">
+        <object-id>16484</object-id>
+        <columns>uid</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="45" parent="12" name="invoice_pkey">
+        <columns>uid</columns>
+        <underlying-index>invoice_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="46" parent="12" name="invoice_our_id_fkey">
+        <columns>our_id</columns>
+        <ref-key>~.company.company_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="47" parent="12" name="invoice_clientcompany_id_fkey">
+        <columns>client_id</columns>
+        <ref-key>~.company.company_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="48" parent="13" name="uid">
+        <state-number>811</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;invoice_dt_uid_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="49" parent="13" name="parentuid">
+        <state-number>847</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="50" parent="13" name="description">
+        <state-number>811</state-number>
+        <data-type>varchar(350)</data-type>
+      </column>
+      <column id="51" parent="13" name="unit_id">
+        <state-number>811</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="52" parent="13" name="amount">
+        <state-number>811</state-number>
+        <data-type>numeric(4,2)</data-type>
+      </column>
+      <column id="53" parent="13" name="price">
+        <state-number>811</state-number>
+        <data-type>numeric(10,2)</data-type>
+      </column>
+      <column id="54" parent="13" name="sum">
+        <state-number>811</state-number>
+        <data-type>numeric(10,2)</data-type>
+      </column>
+      <index id="55" parent="13" name="invoice_dt_pkey">
+        <object-id>16511</object-id>
+        <columns>uid</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="56" parent="13" name="invoice_dt_pkey">
+        <columns>uid</columns>
+        <underlying-index>invoice_dt_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="57" parent="13" name="invoice_dt_invoice_id_fkey">
+        <columns>parentuid</columns>
+        <ref-key>~.invoice.invoice_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="58" parent="13" name="invoice_dt_unit_id_fkey">
+        <columns>unit_id</columns>
+        <ref-key>~.unit.unit_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="59" parent="14" name="uid">
+        <state-number>757</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;person_uid_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="60" parent="14" name="name">
+        <state-number>757</state-number>
+        <data-type>char(50)</data-type>
+      </column>
+      <column id="61" parent="14" name="fullname">
+        <state-number>757</state-number>
+        <data-type>varchar(150)</data-type>
+      </column>
+      <column id="62" parent="14" name="post_id">
+        <state-number>757</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <index id="63" parent="14" name="person_pkey">
+        <object-id>16446</object-id>
+        <columns>uid</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="64" parent="14" name="person_pkey">
+        <columns>uid</columns>
+        <underlying-index>person_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="65" parent="14" name="person_post_id_fkey">
+        <columns>post_id</columns>
+        <ref-key>~.post.post_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="66" parent="15" name="uid">
+        <state-number>749</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;post_uid_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="67" parent="15" name="name">
+        <state-number>749</state-number>
+        <data-type>varchar(40)</data-type>
+      </column>
+      <index id="68" parent="15" name="post_pkey">
+        <object-id>16420</object-id>
+        <columns>uid</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="69" parent="15" name="post_pkey">
+        <columns>uid</columns>
+        <underlying-index>post_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="70" parent="16" name="uid">
+        <state-number>752</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;unit_uid_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="71" parent="16" name="name">
+        <state-number>752</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="72" parent="16" name="fullname">
+        <state-number>829</state-number>
+        <data-type>char(50)</data-type>
+      </column>
+      <index id="73" parent="16" name="unit_pkey">
+        <object-id>16428</object-id>
+        <columns>uid</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="74" parent="16" name="unit_pkey">
+        <columns>uid</columns>
+        <underlying-index>unit_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+    </database-model>
   </data-source>
   <data-source name="hibernate.cfg.xml/Hibernate" uuid="859a568a-5e06-4fd6-ac3f-f383f407c9b9">
     <database-info product="PostgreSQL" version="9.4.7" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
@@ -13,8 +364,8 @@
       <schema id="2" parent="1" name="public">
         <object-id>2200</object-id>
         <comment>standard public schema</comment>
-        <introspection-state-number>848</introspection-state-number>
-        <introspection-timestamp>2016-04-29.13:26:54.377</introspection-timestamp>
+        <introspection-state-number>877</introspection-state-number>
+        <introspection-timestamp>2016-05-13.13:43:18.481</introspection-timestamp>
       </schema>
       <schema id="3" parent="1" name="pg_catalog">
         <object-id>11</object-id>
@@ -56,15 +407,15 @@
       </table>
       <table id="12" parent="2" name="company">
         <object-id>16463</object-id>
-        <state-number>807</state-number>
+        <state-number>863</state-number>
       </table>
       <table id="13" parent="2" name="invoice">
         <object-id>16480</object-id>
-        <state-number>811</state-number>
+        <state-number>863</state-number>
       </table>
       <table id="14" parent="2" name="invoicedt">
         <object-id>16507</object-id>
-        <state-number>839</state-number>
+        <state-number>877</state-number>
       </table>
       <table id="15" parent="2" name="person">
         <object-id>16442</object-id>
@@ -76,7 +427,7 @@
       </table>
       <table id="17" parent="2" name="unit">
         <object-id>16424</object-id>
-        <state-number>829</state-number>
+        <state-number>877</state-number>
       </table>
       <table id="18" parent="3" name="pg_aggregate">
         <object-id>2600</object-id>
@@ -20033,7 +20384,7 @@
         <data-type>varchar(250)</data-type>
       </column>
       <column id="3560" parent="11" name="isMain">
-        <state-number>801</state-number>
+        <state-number>854</state-number>
         <data-type>boolean</data-type>
       </column>
       <column id="3561" parent="11" name="parentuid">
@@ -20058,7 +20409,6 @@
       </key>
       <foreign-key id="3565" parent="11" name="account_company_uid_fkey">
         <columns>#9</columns>
-        <ref-key>~.company.company_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
@@ -20088,8 +20438,8 @@
         <state-number>775</state-number>
         <data-type>varchar(250)</data-type>
       </column>
-      <column id="3572" parent="12" name="parentUid">
-        <state-number>841</state-number>
+      <column id="3572" parent="12" name="personuid">
+        <state-number>857</state-number>
         <data-type>integer</data-type>
       </column>
       <index id="3573" parent="12" name="company_pkey">
@@ -20104,7 +20454,7 @@
         <primary>1</primary>
       </key>
       <foreign-key id="3575" parent="12" name="company_person_id_fkey">
-        <columns>parentUid</columns>
+        <columns>personuid</columns>
         <ref-key>~.person.person_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
@@ -20119,21 +20469,21 @@
         <state-number>789</state-number>
         <data-type>date</data-type>
       </column>
-      <column id="3578" parent="13" name="our_id">
-        <state-number>789</state-number>
-        <data-type>integer</data-type>
-      </column>
-      <column id="3579" parent="13" name="client_id">
-        <state-number>794</state-number>
-        <data-type>integer</data-type>
-      </column>
-      <column id="3580" parent="13" name="description">
+      <column id="3578" parent="13" name="description">
         <state-number>789</state-number>
         <data-type>varchar(350)</data-type>
       </column>
-      <column id="3581" parent="13" name="number">
+      <column id="3579" parent="13" name="number">
         <state-number>799</state-number>
         <data-type>varchar(10)</data-type>
+      </column>
+      <column id="3580" parent="13" name="ourid">
+        <state-number>859</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="3581" parent="13" name="clientid">
+        <state-number>862</state-number>
+        <data-type>integer</data-type>
       </column>
       <index id="3582" parent="13" name="invoice_pkey">
         <object-id>16484</object-id>
@@ -20147,13 +20497,13 @@
         <primary>1</primary>
       </key>
       <foreign-key id="3584" parent="13" name="invoice_our_id_fkey">
-        <columns>our_id</columns>
+        <columns>number</columns>
         <ref-key>~.company.company_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
       <foreign-key id="3585" parent="13" name="invoice_clientcompany_id_fkey">
-        <columns>client_id</columns>
+        <columns>number</columns>
         <ref-key>~.company.company_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
@@ -20172,21 +20522,21 @@
         <state-number>811</state-number>
         <data-type>varchar(350)</data-type>
       </column>
-      <column id="3589" parent="14" name="unit_id">
-        <state-number>811</state-number>
-        <data-type>integer</data-type>
-      </column>
-      <column id="3590" parent="14" name="amount">
+      <column id="3589" parent="14" name="amount">
         <state-number>811</state-number>
         <data-type>numeric(4,2)</data-type>
       </column>
-      <column id="3591" parent="14" name="price">
+      <column id="3590" parent="14" name="price">
         <state-number>811</state-number>
         <data-type>numeric(10,2)</data-type>
       </column>
-      <column id="3592" parent="14" name="sum">
+      <column id="3591" parent="14" name="sum">
         <state-number>811</state-number>
         <data-type>numeric(10,2)</data-type>
+      </column>
+      <column id="3592" parent="14" name="unitid">
+        <state-number>876</state-number>
+        <data-type>integer</data-type>
       </column>
       <index id="3593" parent="14" name="invoice_dt_pkey">
         <object-id>16511</object-id>
@@ -20206,7 +20556,7 @@
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
       <foreign-key id="3596" parent="14" name="invoice_dt_unit_id_fkey">
-        <columns>unit_id</columns>
+        <columns>amount</columns>
         <ref-key>~.unit.unit_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
@@ -20225,8 +20575,8 @@
         <state-number>757</state-number>
         <data-type>varchar(150)</data-type>
       </column>
-      <column id="3600" parent="15" name="post_id">
-        <state-number>757</state-number>
+      <column id="3600" parent="15" name="postid">
+        <state-number>856</state-number>
         <data-type>integer</data-type>
       </column>
       <index id="3601" parent="15" name="person_pkey">

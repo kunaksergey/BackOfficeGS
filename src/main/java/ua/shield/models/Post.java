@@ -11,6 +11,10 @@ public class Post {
     public Post() {
     }
 
+    public Post(String name) {
+        this.name = name;
+    }
+
     public int getUid() {
         return uid;
     }
@@ -25,5 +29,10 @@ public class Post {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Должность: " + name;
     }
 }

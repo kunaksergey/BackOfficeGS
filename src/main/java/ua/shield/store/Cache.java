@@ -36,6 +36,11 @@ public class Cache<T> implements StorageBeen<T> {
     }
 
     @Override
+    public void deleteBeen(T been) {
+
+    }
+
+    @Override
     public void close() {
         storage.close();
     }

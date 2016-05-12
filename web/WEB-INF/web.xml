@@ -76,25 +76,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>UnitView</servlet-name>
-        <servlet-class>ua.shield.servlets.unit.UnitViewServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-
-        <servlet-name>UnitView</servlet-name>
-        <url-pattern>/unit/view</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>PersonView</servlet-name>
-        <servlet-class>ua.shield.servlets.person.PersonViewServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>PersonView</servlet-name>
-        <url-pattern>/person/view</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>LoginServler</servlet-name>
         <servlet-class>ua.shield.servlets.login.LoginServlet</servlet-class>
     </servlet>

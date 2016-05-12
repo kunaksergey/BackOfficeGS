@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ua.shield.models">
+    <class name="Invoice" table="invoice">
+        <meta attribute="class-description">
+            This class contains the invoice detail.
+        </meta>
+        <id name="uid" type="int" column="uid">
+            <generator class="identity"/>
+        </id>
+        <property name="number" column="number" type="string"/>
+        <property name="date" column="datedoc" type="date"/>
+        <many-to-one name="ourCompany" column="ourid" unique="true" lazy="false"
+                     class="Company" not-null="true"/>
+        <many-to-one name="clientCompany" column="clientid" unique="true" lazy="false"
+                     class="Company" not-null="true"/>
+        <property name="description" column="description" type="string"/>
+        <set name="invoiceDtSet" table="invoicedt"
+             lazy="false" cascade="all">
+            <key>
+                <column name="parentuid"/>
+            </key>
+            <one-to-many class="InvoiceDt"/>
+        </set>
+    </class>
+</hibernate-mapping>
+

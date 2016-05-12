@@ -21,6 +21,11 @@ public class JdbcStorageUnit extends JdbcStorageBeen<Unit> {
 
     }
 
+    @Override
+    public void deleteBeen(Unit been) {
+
+    }
+
 
     @Override
     public void close() {

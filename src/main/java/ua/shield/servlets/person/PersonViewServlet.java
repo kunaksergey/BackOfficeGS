@@ -5,6 +5,7 @@ import ua.shield.store.person.PersonCache;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import java.io.IOException;
 /**
  * Created by sa on 20.04.16.
  */
+@WebServlet("/person/view")
 public class PersonViewServlet extends HttpServlet {
     private final PersonCache PERSON_CACHE = PersonCache.getInstance();
 

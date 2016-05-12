@@ -1,7 +1,14 @@
 package ua.shield.models;
 
+import org.hibernate.annotations.CascadeType;
+
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import static org.hibernate.annotations.CascadeType.*;
 
 /**
  * Created by sa on 13.04.16.
@@ -23,7 +30,8 @@ public class Company {
     private String edrpou;
     private String inn;
     private String address;
-    private List<Account> accountList = new ArrayList<>();
+    private List<Account> accountList;
+    private Set<Account> accountSet;
     private Person supervisor;
 
     public Company() {
@@ -77,6 +85,14 @@ public class Company {
         this.address = address;
     }
 
+    public Set<Account> getAccountSet() {
+        return accountSet;
+    }
+
+    public void setAccountSet(Set<Account> accountSet) {
+        this.accountSet = accountSet;
+    }
+
     public List<Account> getAccountList() {
         return accountList;
     }
@@ -85,12 +101,12 @@ public class Company {
         this.accountList.addAll(accountList);
     }
 
-    public void setAccountList(Account accountList) {
-        this.accountList.add(accountList);
+    public void setAccountList(Account account) {
+        this.accountList.add(account);
     }
 
     public Account getMainAccount() {
-        for (Account account : accountList) {
+        for (Account account : accountSet) {
             if (account.isMain()) return account;
         }
         return null;
@@ -102,5 +118,17 @@ public class Company {
 
     public void setSupervisor(Person supervisor) {
         this.supervisor = supervisor;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("Кампания:\n");
+        str.append(name.trim()).append("\n").append(fullName.trim()).append("\n");
+        str.append(supervisor.toString()).append("\n");
+        for (Account account : accountSet) {
+            str.append(account.toString());
+        }
+        return str.toString();
     }
 }

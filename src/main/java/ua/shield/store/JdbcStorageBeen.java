@@ -13,7 +13,7 @@ import java.util.List;
  */
 abstract public class JdbcStorageBeen<T> implements StorageBeen<T> {
     protected final Connection connection;
-    protected final String tableName = Helper.getGenericParameterClass(this.getClass(), 0);
+    protected final String tableName = Helper.getTableNameFromGeneric(this.getClass(), 0);
 
     /**
      * конструктор создающий соеденение
@@ -80,6 +80,11 @@ abstract public class JdbcStorageBeen<T> implements StorageBeen<T> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void deleteBeen(T been) {
+
     }
 
     /**

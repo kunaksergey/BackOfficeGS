@@ -19,7 +19,6 @@ public class PersonCache extends Cache<Person> {
     }
 
     private PersonCache() {
-
     }
 
     public static PersonCache getInstance() {

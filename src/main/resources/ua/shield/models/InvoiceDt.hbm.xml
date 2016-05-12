@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ua.shield.models">
+    <class name="InvoiceDt" table="invoicedt">
+        <meta attribute="class-description">
+            This class contains the invoiceDt detail.
+        </meta>
+        <id name="uid" type="int" column="uid">
+            <generator class="identity"/>
+        </id>
+        <property name="decription" column="description" type="string"/>
+        <property name="amount" column="amount" type="double"/>
+        <property name="price" column="price" type="double"/>
+        <property name="sum" column="sum" type="double"/>
+        <many-to-one name="unit" column="unitid" unique="true" lazy="false"
+                     class="Unit" not-null="true"/>
+    </class>
+</hibernate-mapping>
+

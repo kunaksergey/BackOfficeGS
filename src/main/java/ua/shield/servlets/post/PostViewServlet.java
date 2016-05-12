@@ -1,8 +1,9 @@
-package ua.shield.servlets.unit;
+package ua.shield.servlets.post;
 
 
+import ua.shield.models.Post;
 import ua.shield.models.Unit;
-import ua.shield.store.unit.UnitCache;
+import ua.shield.store.post.PostCache;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -16,9 +17,9 @@ import java.io.IOException;
 /**
  * Created by sa on 18.04.16.
  */
-@WebServlet("/unit/view")
-public class UnitViewServlet extends HttpServlet {
-    private final UnitCache UNIT_CACHE = UnitCache.getInstance();
+@WebServlet("/post/view")
+public class PostViewServlet extends HttpServlet {
+    private final PostCache POST_CACHE = PostCache.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,13 +27,13 @@ public class UnitViewServlet extends HttpServlet {
         String servletInfo = getServletInfo();
 
         if (req.getParameter("uid") != null) {
-            Unit unit = UNIT_CACHE.getBeenById(Integer.parseInt(req.getParameter("uid")));
-            req.setAttribute("unit", unit);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/views/unit/UnitView.jsp");
+            Post post = POST_CACHE.getBeenById(Integer.parseInt(req.getParameter("uid")));
+            req.setAttribute("post", post);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/views/post/PostView.jsp");
             dispatcher.forward(req, resp);
         } else {
-            req.setAttribute("units", UNIT_CACHE.getBeenList());
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/views/unit/UnitViewList.jsp");
+            req.setAttribute("posts", POST_CACHE.getBeenList());
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/views/post/PostViewList.jsp");
             dispatcher.forward(req, resp);
         }
     }
